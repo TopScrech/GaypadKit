@@ -37,7 +37,10 @@ public final class GamepadManager {
             self.setupControllers()
         }
         
-        GCController.startWirelessControllerDiscovery(completionHandler: nil)
+        GCController.startWirelessControllerDiscovery(
+            completionHandler: nil
+        )
+        
         setupControllers()
     }
     
