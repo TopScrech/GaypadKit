@@ -3,7 +3,7 @@ import GameController
 @Observable
 @available(iOS 17, macOS 14, tvOS 17, *)
 public final class GamepadManager {
-    static let shared = GamepadManager()
+    public static let shared = GamepadManager()
     
     // Buttons
     var aPressed = false
