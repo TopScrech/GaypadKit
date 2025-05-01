@@ -6,24 +6,24 @@ public final class GamepadManager {
     static let shared = GamepadManager()
     
     // Buttons
-    var isAPressed = false
-    var isBPressed = false
-    var isXPressed = false
-    var isYPressed = false
-    var isMenuPressed = false
-    var isOptionsPressed = false
-    var isLeftThumbstickPressed = false
-    var isRightThumbstickPressed = false
-    var isLeftShoulderPressed = false
-    var isRightShoulderPressed = false
-    var isLeftTriggerPressed = false
-    var isRightTriggerPressed = false
+    var aPressed = false
+    var bPressed = false
+    var xPressed = false
+    var yPressed = false
+    var menuPressed = false
+    var optionsPressed = false
+    var leftThumbstickPressed = false
+    var rightThumbstickPressed = false
+    var leftShoulderPressed = false
+    var rightShoulderPressed = false
+    var leftTriggerPressed = false
+    var rightTriggerPressed = false
     
     // D-Pad
-    var isDpadUpPressed = false
-    var isDpadDownPressed = false
-    var isDpadLeftPressed = false
-    var isDpadRightPressed = false
+    var dpadUpPressed = false
+    var dpadDownPressed = false
+    var dpadLeftPressed = false
+    var dpadRightPressed = false
     
     // Battery
     var batteryLevel: Float = -1
@@ -58,27 +58,27 @@ public final class GamepadManager {
                     }
                 }
                 
-                check(gamepad?.buttonA)               { self.isAPressed = $0 }
-                check(gamepad?.buttonB)               { self.isBPressed = $0 }
-                check(gamepad?.buttonX)               { self.isXPressed = $0 }
-                check(gamepad?.buttonY)               { self.isYPressed = $0 }
-                check(gamepad?.buttonMenu)            { self.isMenuPressed = $0 }
-                check(gamepad?.buttonOptions)         { self.isOptionsPressed = $0 }
-                check(gamepad?.leftThumbstickButton)  { self.isLeftThumbstickPressed = $0 }
-                check(gamepad?.rightThumbstickButton) { self.isRightThumbstickPressed = $0 }
-                check(gamepad?.leftShoulder)          { self.isLeftShoulderPressed = $0 }
-                check(gamepad?.rightShoulder)         { self.isRightShoulderPressed = $0 }
-                check(gamepad?.leftTrigger)           { self.isLeftTriggerPressed = $0 }
-                check(gamepad?.rightTrigger)          { self.isRightTriggerPressed = $0 }
+                check(gamepad?.buttonA)               { self.aPressed = $0 }
+                check(gamepad?.buttonB)               { self.bPressed = $0 }
+                check(gamepad?.buttonX)               { self.xPressed = $0 }
+                check(gamepad?.buttonY)               { self.yPressed = $0 }
+                check(gamepad?.buttonMenu)            { self.menuPressed = $0 }
+                check(gamepad?.buttonOptions)         { self.optionsPressed = $0 }
+                check(gamepad?.leftThumbstickButton)  { self.leftThumbstickPressed = $0 }
+                check(gamepad?.rightThumbstickButton) { self.rightThumbstickPressed = $0 }
+                check(gamepad?.leftShoulder)          { self.leftShoulderPressed = $0 }
+                check(gamepad?.rightShoulder)         { self.rightShoulderPressed = $0 }
+                check(gamepad?.leftTrigger)           { self.leftTriggerPressed = $0 }
+                check(gamepad?.rightTrigger)          { self.rightTriggerPressed = $0 }
                 
                 if let dpad = element as? GCControllerDirectionPad {
                     let x = dpad.xAxis.value
                     let y = dpad.yAxis.value
                     
-                    self.isDpadUpPressed    = x == 0 && y == 1
-                    self.isDpadDownPressed  = x == 0 && y == -1
-                    self.isDpadLeftPressed  = x == -1 && y == 0
-                    self.isDpadRightPressed = x == 1 && y == 0
+                    self.dpadUpPressed    = x == 0 && y == 1
+                    self.dpadDownPressed  = x == 0 && y == -1
+                    self.dpadLeftPressed  = x == -1 && y == 0
+                    self.dpadRightPressed = x == 1 && y == 0
                 }
             }
         }
