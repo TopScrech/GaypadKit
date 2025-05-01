@@ -6,27 +6,27 @@ public final class GamepadManager {
     public static let shared = GamepadManager()
     
     // Buttons
-    var aPressed = false
-    var bPressed = false
-    var xPressed = false
-    var yPressed = false
-    var menuPressed = false
-    var optionsPressed = false
-    var leftThumbstickPressed = false
-    var rightThumbstickPressed = false
-    var leftShoulderPressed = false
-    var rightShoulderPressed = false
-    var leftTriggerPressed = false
-    var rightTriggerPressed = false
+    public var aPressed = false
+    public var bPressed = false
+    public var xPressed = false
+    public var yPressed = false
+    public var menuPressed = false
+    public var optionsPressed = false
+    public var leftThumbstickPressed = false
+    public var rightThumbstickPressed = false
+    public var leftShoulderPressed = false
+    public var rightShoulderPressed = false
+    public var leftTriggerPressed = false
+    public var rightTriggerPressed = false
     
     // D-Pad
-    var dpadUpPressed = false
-    var dpadDownPressed = false
-    var dpadLeftPressed = false
-    var dpadRightPressed = false
+    public var dpadUpPressed = false
+    public var dpadDownPressed = false
+    public var dpadLeftPressed = false
+    public var dpadRightPressed = false
     
     // Battery
-    var batteryLevel: Float = -1
+    public var batteryLevel: Float = -1
     
     private init() {
         NotificationCenter.default.addObserver(
