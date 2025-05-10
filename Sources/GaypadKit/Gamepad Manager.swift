@@ -25,7 +25,7 @@ public final class GamepadManager {
     public var dpadLeftPressed = false
     public var dpadRightPressed = false
     
-    // Battery
+    public var isConnected = false
     public var batteryLevel: Float = -1
     
     private init() {
@@ -34,14 +34,19 @@ public final class GamepadManager {
             object: nil,
             queue: .main
         ) { _ in
+            self.isConnected = !GCController.controllers().isEmpty
             self.setupControllers()
         }
         
-        GCController.startWirelessControllerDiscovery(
-            completionHandler: nil
-        )
+        NotificationCenter.default.addObserver(
+            forName: .GCControllerDidDisconnect,
+            object: nil,
+            queue: .main
+        ) { _ in
+            self.isConnected = !GCController.controllers().isEmpty
+        }
         
-        setupControllers()
+        GCController.startWirelessControllerDiscovery(completionHandler: nil)
     }
     
     private func setupControllers() {
