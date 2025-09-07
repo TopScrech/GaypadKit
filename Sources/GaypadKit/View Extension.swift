@@ -3,10 +3,11 @@ import SwiftUI
 public extension View {
     func onGamepadPressed(
         _ button: GamepadButton,
-        _ action: @escaping () -> Void
+        cooldown: TimeInterval? = nil,
+        action: @escaping () -> Void
     ) -> some View {
         modifier(
-            GamepadButtonPressedModifier(button, action)
+            GamepadButtonPressedModifier(button, cooldown: cooldown, action: action)
         )
     }
 }

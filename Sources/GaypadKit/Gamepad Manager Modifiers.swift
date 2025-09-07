@@ -2,11 +2,19 @@ import SwiftUI
 
 struct GamepadButtonPressedModifier: ViewModifier {
     @State private var controller = GamepadManager.shared
+    @State private var lastActionTime: Date?
+    
     private let button: GamepadButton
     private let action: () -> Void
+    private let cooldown: TimeInterval?
     
-    init(_ button: GamepadButton, _ action: @escaping () -> Void) {
+    init(
+        _ button: GamepadButton,
+        cooldown: TimeInterval? = nil,
+        action: @escaping () -> Void
+    ) {
         self.button = button
+        self.cooldown = cooldown
         self.action = action
     }
     
@@ -14,7 +22,16 @@ struct GamepadButtonPressedModifier: ViewModifier {
         content
             .onChange(of: buttonPressedValue) {
                 if buttonPressedValue {
-                    action()
+                    if let cooldown {
+                        let now = Date()
+                        
+                        if lastActionTime == nil || now.timeIntervalSince(lastActionTime!) >= cooldown {
+                            action()
+                            lastActionTime = now
+                        }
+                    } else {
+                        action()
+                    }
                 }
             }
     }
