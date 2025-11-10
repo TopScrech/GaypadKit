@@ -1,6 +1,7 @@
 import GameController
 
 @Observable
+@MainActor
 @available(iOS 17, macOS 14, tvOS 17, *)
 public final class GamepadManager {
     public static let shared = GamepadManager()
@@ -34,8 +35,10 @@ public final class GamepadManager {
             object: nil,
             queue: .main
         ) { _ in
-            self.isConnected = !GCController.controllers().isEmpty
-            self.setupControllers()
+            Task { @MainActor in
+                self.isConnected = !GCController.controllers().isEmpty
+                self.setupControllers()
+            }
         }
         
         NotificationCenter.default.addObserver(
@@ -43,7 +46,9 @@ public final class GamepadManager {
             object: nil,
             queue: .main
         ) { _ in
-            self.isConnected = !GCController.controllers().isEmpty
+            Task { @MainActor in
+                self.isConnected = !GCController.controllers().isEmpty
+            }
         }
         
         GCController.startWirelessControllerDiscovery(completionHandler: nil)
