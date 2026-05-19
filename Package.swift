@@ -1,5 +1,4 @@
-// swift-tools-version: 6.2.1
-// The swift-tools-version declares the minimum version of Swift required to build this package
+// swift-tools-version: 6.3.2
 
 import PackageDescription
 
@@ -12,10 +11,7 @@ let package = Package(
         .visionOS(.v1)
     ],
     products: [
-        .library(
-            name: "GaypadKit",
-            targets: ["GaypadKit"]
-        )
+        .library(name: "GaypadKit", targets: ["GaypadKit"])
     ],
     targets: [
         .target(name: "GaypadKit")
